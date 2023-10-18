@@ -9,20 +9,30 @@ app.use(cors());
 
 app.get('/api/v1/messages', (req, res) => {
   
-  res.json({
-    "status": "success",
-    "message": "GET messages",
-    "data": [
-      {
-        "user": "Bart",
-        "message": "Hello World"
-      },
-      {
-        "user": "Gert",
-        "message": "Goodbye World"
-      }
-    ],
-  })
+  // Get the username from the URL
+  const username = req.query.user;
+  
+  if(username){
+    res.json({
+      "status": "success",
+      "message": `GET message for username ${username}`,
+    })
+  }else{
+    res.json({
+      "status": "success",
+      "message": "GET messages",
+      "data": [
+        {
+          "user": "Bart",
+          "message": "Hello World"
+        },
+        {
+          "user": "Gert",
+          "message": "Goodbye World"
+        }
+      ],
+    })
+  }
 })
 app.get('/api/v1/messages/:id', (req, res) => {
   // Get the ID from the URL
@@ -62,6 +72,7 @@ app.delete('/api/v1/messages/:id', (req, res) => {
     
   })
 })
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
