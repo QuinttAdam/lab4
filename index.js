@@ -51,6 +51,17 @@ app.put('/api/v1/messages/:id', (req, res) => {
     
   })
 })
+app.delete('/api/v1/messages/:id', (req, res) => {
+  // Get the ID from the URL
+  const id = req.params.id;  
+
+  res.json({
+    
+    "status": "success",
+    "message": `DELETING message with id ${id}`,
+    
+  })
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
