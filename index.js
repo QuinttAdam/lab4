@@ -40,6 +40,17 @@ app.get('/api/v1/messages/:id', (req, res) => {
     ],
   })
 })
+app.put('/api/v1/messages/:id', (req, res) => {
+  // Get the ID from the URL
+  const id = req.params.id;  
+
+  res.json({
+    
+    "status": "success",
+    "message": `UPDATE message with id ${id}`,
+    
+  })
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
